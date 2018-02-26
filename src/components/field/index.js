@@ -37,7 +37,7 @@ export default class TextField extends PureComponent {
     labelPadding: 4,
     inputContainerPadding: 8,
 
-    tintColor: 'red', //'rgb(0, 145, 234)',
+    tintColor: 'rgb(0, 145, 234)',
     textColor: 'rgba(0, 0, 0, .87)',
     baseColor: 'rgba(0, 0, 0, .38)',
 
@@ -510,8 +510,11 @@ export default class TextField extends PureComponent {
       <View {...containerProps}>
         <Animated.View {...inputContainerProps}>
           {disabled && <Line {...lineProps} />}
-
-          <Label {...labelProps}>{label}</Label>
+          { label ?
+            <Label {...labelProps}>{label}</Label>
+          :
+            null 
+          }
 
           <View style={styles.row}>
             {this.renderAffix('prefix', active, focused)}
