@@ -126,7 +126,7 @@ export default class Label extends PureComponent {
 
     return (
       <Animated.View style={containerStyle}>
-        <Animated.Text style={[style, textStyle]} {...props}>
+        <Animated.Text style={[style, textStyle, {fontFamily: 'Nosifer-Regular'}]} {...props}>
           {children}
         </Animated.Text>
       </Animated.View>
