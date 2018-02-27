@@ -35,7 +35,7 @@ export default class TextField extends PureComponent {
     labelFontSize: 12,
     labelHeight: 32,
     labelPadding: 4,
-    inputContainerPadding: 8,
+    inputContainerPadding: 8 + 10,
 
     tintColor: 'rgb(0, 145, 234)',
     textColor: 'rgba(0, 0, 0, .87)',
@@ -389,7 +389,7 @@ export default class TextField extends PureComponent {
       });
 
     let inputContainerStyle = {
-      paddingTop: labelHeight,
+      paddingTop: labelHeight + 4,
       paddingBottom: inputContainerPadding + 5,
 
       ...(disabled?
@@ -549,18 +549,13 @@ export default class TextField extends PureComponent {
         <Animated.View style={helperContainerStyle}>
           <View style={styles.flex}>
             { errored ?
-                <View style={{flexDirection: 'row'}}>
-                    <View style={{backgroundColor: errorColor, borderRadius: 9, height: 18, width: 18, flexDirection: 'row', justifyContent: 'center', marginVertical: 3, marginRight: 9}}>
-                        <Text style={{fontWeight: 'bold', color: 'white'}}>!</Text>
-                    </View>
-                    {/*}<Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3}]}>{ errored ? error : null}</Helper>*/}
-                    {/*<Text style={[errorStyle, titleTextStyle]}>{error}</Text>*/}
+                <View style={{backgroundColor: errorColor, borderRadius: 9, height: 18, width: 18, flexDirection: 'row', justifyContent: 'center', marginVertical: 3, marginRight: 9}}>
+                    <Text style={{fontWeight: 'bold', color: 'white'}}>!</Text>
                 </View>
             :
                 null
             }
             <Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3}]}>{ errored ? error : null}</Helper>
-            {/*<Helper style={[errorStyle, titleTextStyle]}>{ errored ? error : null}</Helper>*/}
             <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
           </View>
 
