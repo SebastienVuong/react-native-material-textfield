@@ -41,7 +41,7 @@ export default class TextField extends PureComponent {
     textColor: 'rgba(0, 0, 0, .87)',
     baseColor: 'rgba(0, 0, 0, .38)',
 
-    errorColor: 'rgb(213, 0, 0)',
+    errorColor: '#FE573A', //'rgb(213, 0, 0)',
 
     lineWidth: StyleSheet.hairlineWidth,
     activeLineWidth: 2,
@@ -475,8 +475,12 @@ export default class TextField extends PureComponent {
       ],
     };
 
-    if (this.state.focused) {
+    if (focused) {
         inputContainerProps.style.push({borderColor: '#009BFF', borderWidth: 2})
+    }
+
+    if (errored) {
+        inputContainerProps.style.push({borderColor: '#FE573A', backgroundColor: '#FBF3F1', borderWidth: 1})
     }
 
     let lineProps = {
@@ -492,7 +496,7 @@ export default class TextField extends PureComponent {
       activeFontSize: labelFontSize,
       tintColor,
       baseColor,
-      errorColor,
+      errorColor: baseColor,
       animationDuration,
       active,
       focused,
@@ -544,7 +548,19 @@ export default class TextField extends PureComponent {
 
         <Animated.View style={helperContainerStyle}>
           <View style={styles.flex}>
-            <Helper style={[errorStyle, titleTextStyle]}>{error}</Helper>
+            { errored ?
+                <View style={{flexDirection: 'row'}}>
+                    <View style={{backgroundColor: errorColor, borderRadius: 9, height: 18, width: 18, flexDirection: 'row', justifyContent: 'center', marginVertical: 3, marginRight: 9}}>
+                        <Text style={{fontWeight: 'bold', color: 'white'}}>!</Text>
+                    </View>
+                    {/*}<Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3}]}>{ errored ? error : null}</Helper>*/}
+                    {/*<Text style={[errorStyle, titleTextStyle]}>{error}</Text>*/}
+                </View>
+            :
+                null
+            }
+            <Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3}]}>{ errored ? error : null}</Helper>
+            {/*<Helper style={[errorStyle, titleTextStyle]}>{ errored ? error : null}</Helper>*/}
             <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
           </View>
 
