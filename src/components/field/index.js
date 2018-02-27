@@ -390,7 +390,7 @@ export default class TextField extends PureComponent {
 
     let inputContainerStyle = {
       paddingTop: labelHeight,
-      paddingBottom: inputContainerPadding,
+      paddingBottom: inputContainerPadding + 5,
 
       ...(disabled?
         { overflow: 'hidden' }:
@@ -471,9 +471,13 @@ export default class TextField extends PureComponent {
       style: [
         styles.inputContainer,
         inputContainerStyle,
-        inputContainerStyleOverrides,
+        inputContainerStyleOverrides
       ],
     };
+
+    if (this.state.focused) {
+        inputContainerProps.style.push({borderColor: '#009BFF', borderWidth: 2})
+    }
 
     let lineProps = {
       type: disabledLineType,
@@ -510,11 +514,8 @@ export default class TextField extends PureComponent {
       <View {...containerProps}>
         <Animated.View {...inputContainerProps}>
           {disabled && <Line {...lineProps} />}
-          { label ?
+
             <Label {...labelProps}>{label}</Label>
-          :
-            null 
-          }
 
           <View style={styles.row}>
             {this.renderAffix('prefix', active, focused)}
@@ -538,6 +539,7 @@ export default class TextField extends PureComponent {
             {this.renderAffix('suffix', active, focused)}
             {this.renderAccessory()}
           </View>
+
         </Animated.View>
 
         <Animated.View style={helperContainerStyle}>
