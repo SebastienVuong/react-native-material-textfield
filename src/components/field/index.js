@@ -547,10 +547,10 @@ export default class TextField extends PureComponent {
         </Animated.View>
 
         <Animated.View style={helperContainerStyle}>
-          <View style={styles.flex}>
+          <View style={[styles.flex, {flexDirection: 'row', alignItems: 'center'}]}>
             { errored ?
                 <View style={{backgroundColor: errorColor, borderRadius: 9, height: 18, width: 18, flexDirection: 'row', justifyContent: 'center', marginVertical: 3, marginRight: 9}}>
-                    <Text style={{fontWeight: 'bold', color: 'white', fontFamily: 'cerebri_regular'}}>!</Text>
+                    <Text style={{fontWeight: 'bold', color: 'white', fontFamily: 'cerebri_regular', position: 'relative', top: -1}}>!</Text>
                 </View>
             :
                 null
