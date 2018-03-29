@@ -525,7 +525,7 @@ export default class TextField extends PureComponent {
             {this.renderAffix('prefix', active, focused)}
 
             <TextInput
-              style={[styles.input, inputStyle, inputStyleOverrides, {fontFamily: 'cerebri_regular'}]}
+              style={[styles.input, inputStyle, inputStyleOverrides, {fontFamily: 'CerebriSans-Regular'}]}
               selectionColor={tintColor}
 
               {...props}
@@ -550,13 +550,13 @@ export default class TextField extends PureComponent {
           <View style={[styles.flex, {flexDirection: 'row', alignItems: 'center'}]}>
             { errored ?
                 <View style={{backgroundColor: errorColor, borderRadius: 9, height: 18, width: 18, flexDirection: 'row', justifyContent: 'center', marginVertical: 3, marginRight: 9}}>
-                    <Text style={{fontWeight: 'bold', color: 'white', fontFamily: 'cerebri_regular', position: 'relative', top: -1}}>!</Text>
+                    <Text style={{fontWeight: 'bold', color: 'white', fontFamily: 'CerebriSans-Regular', position: 'relative', top: -1}}>!</Text>
                 </View>
             :
                 null
             }
-            <Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3, fontFamily: 'cerebri_regular'}]}>{ errored ? error : null}</Helper>
-            <Helper style={[titleStyle, titleTextStyle, {fontFamily: 'cerebri_regular'}]}>{title}</Helper>
+            <Helper style={[errorStyle, titleTextStyle, {paddingLeft: 18 + 3, fontFamily: 'CerebriSans-Regular'}]}>{ errored ? error : null}</Helper>
+            <Helper style={[titleStyle, titleTextStyle, {fontFamily: 'CerebriSans-Regular'}]}>{title}</Helper>
           </View>
 
           <Counter {...counterProps} />
