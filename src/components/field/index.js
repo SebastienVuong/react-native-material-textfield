@@ -378,7 +378,7 @@ export default class TextField extends PureComponent {
       errorColor:
       focus.interpolate({
         inputRange: [-1, 0, 1],
-        outputRange: [errorColor, baseColor, tintColor],
+        outputRange: [errorColor, baseColor, '#009BFF'],
       });
 
     let borderBottomWidth = restricted?
