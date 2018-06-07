@@ -47,7 +47,7 @@ export default class TextField extends PureComponent {
     activeLineWidth: 2,
 
     disabled: false,
-    disabledLineType: 'dotted',
+    disabledLineType: 'none',
     disabledLineWidth: 1,
   };
 
